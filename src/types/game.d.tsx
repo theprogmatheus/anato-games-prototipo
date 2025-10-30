@@ -10,6 +10,7 @@ import { ReactElement } from 'react';
  */
 export enum GameStatus {
     Start = 'start',
+    InitialFlip = 'initialFlip',
     Playing = 'playing',
     Win = 'win',
     Loss = 'loss',

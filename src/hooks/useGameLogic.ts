@@ -47,8 +47,8 @@ export const useGameLogic = (): GameLogic => {
         setTimeLeft(config.limit);
         setCurrentLevelIndex(levelIndex);
         if (!keepScore) setScore(0);
-        setGameStatus(GameStatus.Playing);
-        setIsFlippingDisabled(false);
+        setGameStatus(GameStatus.InitialFlip);
+        setIsFlippingDisabled(true);
     }, []);
 
     const startGame = useCallback(() => {
@@ -81,7 +81,7 @@ export const useGameLogic = (): GameLogic => {
     // --- Lógica do Jogo da Memória ---
 
     const handleCardClick = useCallback((id: number) => {
-        if (isFlippingDisabled || flippedCards.length === 2) return;
+        if (gameStatus !== GameStatus.Playing || isFlippingDisabled || flippedCards.length === 2) return;
 
         // 1. Encontra a carta clicada e evita cliques em cartas já viradas/combinadas
         const cardToFlip = cards.find(c => c.id === id);
@@ -138,10 +138,38 @@ export const useGameLogic = (): GameLogic => {
             }
             return newFlipped;
         });
-    }, [isFlippingDisabled, flippedCards, cards]);
+    }, [gameStatus, isFlippingDisabled, flippedCards, cards]);
 
 
     // --- Efeitos Colaterais (Timers e Checagem de Vitória) ---
+
+    // Lógica de Visualização Inicial (InitialFlip)
+    useEffect(() => {
+        if (gameStatus === GameStatus.InitialFlip) {
+
+            // 1. Vira todas as cartas para visualização
+            setCards(prevCards =>
+                prevCards.map(card => ({ ...card, isFlipped: true }))
+            );
+
+            // 2. Calcula o tempo de visualização (2 segundos por par)
+            // Certifique-se que currentLevelConfig está disponível (o useMemo já garante isso)
+            const pairsCount = currentLevelConfig.pairs;
+            const initialFlipDuration = pairsCount * 2000; // 2 segundos * N pares
+
+            // 3. Define um timeout para virar as cartas de volta e iniciar o jogo
+            const flipBackTimer = setTimeout(() => {
+                setCards(prevCards =>
+                    prevCards.map(card => ({ ...card, isFlipped: false })) // Vira de volta
+                );
+                setIsFlippingDisabled(false); // Habilita o clique
+                setGameStatus(GameStatus.Playing); // Inicia a fase de jogo
+            }, initialFlipDuration);
+
+            return () => clearTimeout(flipBackTimer);
+        }
+    }, [gameStatus, currentLevelConfig]); // currentLevelConfig é um array, use o objeto para evitar loop se a dependência estiver errada
+
 
     // Timer
     useEffect(() => {

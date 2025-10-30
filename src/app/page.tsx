@@ -26,6 +26,7 @@ const HomePage: React.FC = () => {
     // 2. Lógica de Seleção de Tela (Display Logic)
     let screenComponent;
     switch (gameStatus) {
+        case GameStatus.InitialFlip:
         case GameStatus.Playing:
             screenComponent = (
                 <GameScreen
