@@ -32,6 +32,8 @@ export interface AnatomyPair {
     name: string;
     // O 'imageContent' agora é um ReactElement, o que é mais seguro com TypeScript
     // do que a tipagem original. Usamos LucideIcon para tipar o ícone em si.
+    
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     imageContent: ReactElement<any, LucideIcon>;
 }
 

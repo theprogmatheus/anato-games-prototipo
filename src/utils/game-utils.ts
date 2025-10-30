@@ -27,7 +27,7 @@ export const createCards = (config: LevelConfig, anatomyPairs: AnatomyPair[]): C
 
     // 1. Seleciona o número correto de pares para o nível
     const selectedPairs = anatomyPairs.slice(0, config.pairs);
-    let cards: CardData[] = [];
+    const cards: CardData[] = [];
     let idCounter = 1;
 
     // 2. Cria o par de cartas (Imagem e Nome)
