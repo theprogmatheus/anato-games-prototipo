@@ -1,4 +1,4 @@
-// types/game.d.ts
+// types/game.d.tsx
 
 import { LucideIcon } from 'lucide-react';
 import { ReactElement } from 'react';
@@ -58,23 +58,19 @@ export interface LevelConfig {
 
 
 // --- CONFIGURAÇÃO DE DADOS (AGORA TIPADA) ---
-
-// Usamos LucideIcon como um alias para os ícones, facilitando a tipagem do 'imageContent'.
-import { Brain, Heart, Wind, Anchor, Droplet, Microscope, Bone, Beef, Zap, Activity, Feather } from 'lucide-react';
-
 export const ANATOMY_PAIRS: AnatomyPair[] = [
-    { key: 'A', name: 'Cérebro', imageContent: <Brain className="w-16 h-16 text-indigo-700" /> },
-    { key: 'B', name: 'Coração', imageContent: <Heart className="w-16 h-16 text-red-600" fill="red" /> },
-    { key: 'C', name: 'Pulmão', imageContent: <Wind className="w-16 h-16 text-blue-600" /> },
-    { key: 'D', name: 'Fígado', imageContent: <Anchor className="w-16 h-16 text-green-700" /> },
-    { key: 'E', name: 'Rim', imageContent: <Droplet className="w-16 h-16 text-indigo-700" /> },
-    { key: 'F', name: 'Estômago', imageContent: <Microscope className="w-16 h-16 text-yellow-700" /> },
-    { key: 'G', name: 'Osso', imageContent: <Bone className="w-16 h-16 text-gray-700" /> },
-    { key: 'H', name: 'Músculo', imageContent: <Beef className="w-16 h-16 text-red-700" /> },
-    { key: 'I', name: 'Nervo', imageContent: <Zap className="w-16 h-16 text-yellow-500" /> },
-    { key: 'J', name: 'Veia', imageContent: <Droplet className="w-16 h-16 text-blue-500" /> }, // Reutilizado - ok para mock
-    { key: 'K', name: 'Artéria', imageContent: <Activity className="w-16 h-16 text-red-500" /> },
-    { key: 'L', name: 'Pele', imageContent: <Feather className="w-16 h-16 text-yellow-900" /> },
+    { key: 'A', name: 'Tubérculo Conóide', imageContent: <img src="/img/Img1.png" /> },
+    { key: 'B', name: 'Fossa do olécrano', imageContent: <img src="/img/Img2.png" /> },
+    { key: 'C', name: 'Espinha da escápula', imageContent: <img src="/img/Img3.png" /> },
+    { key: 'D', name: 'Olécrano', imageContent: <img src="/img/Img4.jpg" /> },
+    { key: 'E', name: 'Processo estiloide da ulna', imageContent: <img src="/img/Img5.jpg" /> },
+    { key: 'F', name: 'Tuberosidade do rádio', imageContent: <img src="/img/Img6.jpg" /> },
+    { key: 'G', name: 'Primeiro metacarpo', imageContent: <img src="/img/Img7.jpg" /> },
+    { key: 'H', name: 'Quinta falange distal', imageContent: <img src="/img/Img8.jpg" /> },
+    { key: 'I', name: 'Processo coracóide', imageContent: <img src="/img/Img9.jpg" /> },
+    { key: 'J', name: 'Tubérculo maior do úmero', imageContent: <img src="/img/Img10.jpg" /> },
+    { key: 'K', name: 'Cavidade Glenoidal', imageContent: <img src="/img/Img11.jpg" /> },
+    { key: 'L', name: 'Colo cirúrgico', imageContent: <img src="/img/Img12.jpg" /> },
 ];
 
 export const LEVEL_CONFIGS: LevelConfig[] = [

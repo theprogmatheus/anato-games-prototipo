@@ -28,7 +28,7 @@ const GameScreen: React.FC<GameScreenProps> = ({
     const gameGridCols = getGameGridCols(currentLevelConfig.cardsPerLevel);
 
     return (
-        <div className="flex flex-col w-full h-full max-w-6xl p-4 md:p-8 bg-white shadow-2xl rounded-2xl">
+        <div className="flex flex-col w-full h-full max-w-6xl p-4 md:p-8 bg-white shadow-2xl rounded-2xl border-2 border-amber-700">
             <header className="flex flex-wrap justify-between items-center mb-6 p-4 bg-blue-100 rounded-xl shadow-inner">
                 <h2 className="text-2xl md:text-3xl font-bold text-blue-800 w-full md:w-auto mb-2 md:mb-0">
                     Nível {currentLevelConfig.level} - {playerName}
